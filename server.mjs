@@ -61,7 +61,7 @@ async function connectToTikTok() {
   lastError = null;
   broadcast('status', { connectionStatus });
   try {
-    connection = new TikTokLiveConnection(TIKTOK_USERNAME);
+    connection = new TikTokLiveConnection(TIKTOK_USERNAME,{ processInitialData: false});
     connection.on(WebcastEvent.CHAT, (data) => {
       const comment = String(data?.comment || '').trim();
       if (comment.toLocaleLowerCase() !== '@hora') return;
